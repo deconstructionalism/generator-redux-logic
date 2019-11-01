@@ -1,0 +1,21 @@
+{
+  "name": "generator-redux-logic",
+  "version": "0.1.0",
+  "description": "Yeoman generator to scaffold redux-logic projects",
+  "files": [
+    "generators"
+  ],
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "dependencies": {
+    "ast-query": "^2.0.0",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-react": "^7.16.0",
+    "gulp-eslint": "^6.0.0",
+    "jscodeshift": "^0.6.4",
+    "yeoman-generator": "^1.0.0"
+  }
+}

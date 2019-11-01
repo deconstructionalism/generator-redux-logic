@@ -1,0 +1,20 @@
+export const CREATE_<%=upperSnakeCased%> = 'CREATE_<%=upperSnakeCased%>'
+
+export const CREATE_<%=upperSnakeCased%>_FULFILLED = 'CREATE_<%=upperSnakeCased%>_FULFILLED'
+
+export const CREATE_<%=upperSnakeCased%>_REJECTED = 'CREATE_<%=upperSnakeCased%>_REJECTED'
+
+export const create<%=capitalized%> = (data) => ({
+  type: CREATE_<%=upperSnakeCased%>,
+  payload: { data }
+})
+
+export const create<%=capitalized%>Fulfilled = (response) => ({
+  type: CREATE_<%=upperSnakeCased%>_FULFILLED,
+  payload: { response }
+})
+
+export const create<%=capitalized%>Rejected = (error) => ({
+  type: CREATE_<%=upperSnakeCased%>_REJECTED,
+  payload: { error }
+})

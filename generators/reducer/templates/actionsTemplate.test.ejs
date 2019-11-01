@@ -1,0 +1,40 @@
+import {
+  create<%=capitalized%>,
+  create<%=capitalized%>Fulfilled,
+  create<%=capitalized%>Rejected,
+  CREATE_<%=upperSnakeCased%>,
+  CREATE_<%=upperSnakeCased%>_FULFILLED,
+  CREATE_<%=upperSnakeCased%>_REJECTED
+} from './<%=name%>Actions.js'
+
+describe('<%=lowerSpaceCase%> actions', () => {
+  it('should create an action to start creating <%=lowerSpaceCase%>', () => {
+    const data = 'creating <%=lowerSpaceCase%>'
+    const expectedAction = {
+      type: CREATE_<%=upperSnakeCased%>,
+      payload: { data }
+    }
+
+    expect(create<%=capitalized%>(data)).toEqual(expectedAction)
+  })
+
+  it('should create an action for successful creation of <%=lowerSpaceCase%>', () => {
+    const response = 'failed to create <%=lowerSpaceCase%>'
+    const expectedAction = {
+      type: CREATE_<%=upperSnakeCased%>_FULFILLED,
+      payload: { response }
+    }
+
+    expect(create<%=capitalized%>Fulfilled(response)).toEqual(expectedAction)
+  })
+
+  it('should create an action for failure to create <%=lowerSpaceCase%>', () => {
+    const error = 'created <%=lowerSpaceCase%>'
+    const expectedAction = {
+      type: CREATE_<%=upperSnakeCased%>_REJECTED,
+      payload: { error }
+    }
+
+    expect(create<%=capitalized%>Rejected(error)).toEqual(expectedAction)
+  })
+})

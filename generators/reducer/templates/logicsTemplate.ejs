@@ -1,0 +1,44 @@
+import axios from 'axios'
+import { createLogic } from 'redux-logic'
+
+import {
+  CREATE_<%=upperSnakeCased%>,
+  create<%=capitalized%>Fulfilled,
+  create<%=capitalized%>Rejected
+} from '../actions/<%=name%>Actions.js'
+import { pushFeedback } from '../actions/feedbackActions.js'
+
+const getFeedbackMsg = (getState) => getState().<%=name%>.feedbackMsg
+
+const create<%=capitalized%>Logic = createLogic({
+  type: CREATE_<%=upperSnakeCased%>,
+  latest: true,
+
+  async process ({ action, getState }, dispatch, done) {
+    let hasError = false
+    const { data } = action.payload
+
+    try {
+      const res = await axios.post('http://localhost:4000/<%=slugCased%>', {
+        data
+      })
+      const { <%=name%> } = res.data
+
+      await dispatch(create<%=capitalized%>Fulfilled(<%=name%>))
+
+    } catch (error) {
+      hasError = true
+      await dispatch(create<%=capitalized%>Rejected(error))
+
+    } finally {
+      const feedbackType = hasError ? 'error' : 'success'
+
+      await dispatch(pushFeedback(getFeedbackMsg(getState), feedbackType))
+      done()
+    }
+  }
+})
+
+export default [
+  create<%=capitalized%>Logic
+]

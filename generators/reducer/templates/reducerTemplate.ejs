@@ -1,0 +1,48 @@
+import {
+  CREATE_<%=upperSnakeCased%>,
+  CREATE_<%=upperSnakeCased%>_FULFILLED,
+  CREATE_<%=upperSnakeCased%>_REJECTED
+} from '../actions/<%=name%>Actions.js'
+
+const initialState = {
+  message: null,
+  feedbackMsg: ''
+}
+
+const <%=name%>Reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case CREATE_<%=upperSnakeCased%>: {
+      return {
+        ...state,
+        feedbackMsg: 'creating <%=lowerSpaceCase%>',
+        message: null
+      }
+    }
+
+    case CREATE_<%=upperSnakeCased%>_FULFILLED: {
+      const { response } = action.payload
+
+      return {
+        ...state,
+        feedbackMsg: 'created <%=lowerSpaceCase%>',
+        message: response
+      }
+    }
+
+    case CREATE_<%=upperSnakeCased%>_REJECTED: {
+      const { error } = action.payload
+
+      return {
+        ...state,
+        feedbackMsg: 'failed to create <%=lowerSpaceCase%>',
+        message: error
+      }
+    }
+
+    default: {
+      return state
+    }
+  }
+}
+
+export default <%=name%>Reducer

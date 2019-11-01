@@ -1,0 +1,54 @@
+import reducer from './<%=name%>Reducer.js'
+import {
+  create<%=capitalized%>,
+  create<%=capitalized%>Fulfilled,
+  create<%=capitalized%>Rejected
+} from '../actions/<%=name%>Actions.js'
+
+describe('<%=lowerSpaceCase%> reducer', () => {
+  it('should return the initial state', () => {
+    expect(reducer(undefined, {})).toEqual(
+      {
+        message: null,
+        feedbackMsg: '',
+        loading: false
+      }
+    )
+  })
+
+  it('should handle CREATE_<%=upperSnakeCased%>', () => {
+    expect(
+      reducer({}, create<%=capitalized%>('test'))
+    ).toEqual(
+      {
+        message: null,
+        feedbackMsg: 'creating <%=lowerSpaceCase%>',
+        loading: true
+      }
+    )
+  })
+
+  it('should handle CREATE_<%=upperSnakeCased%>_FULFILLED', () => {
+    expect(
+      reducer({}, create<%=capitalized%>Fulfilled(':-)'))
+    ).toEqual(
+      {
+        message: ':-)',
+        feedbackMsg: 'created <%=lowerSpaceCase%>',
+        loading: false
+      }
+    )
+  })
+
+  it('should handle CREATE_<%=upperSnakeCased%>_REJECTED', () => {
+    expect(
+      reducer({}, create<%=capitalized%>Rejected(':-('))
+    ).toEqual(
+      {
+        message: ':-(',
+        feedbackMsg: 'failed to create <%=lowerSpaceCase%>',
+        loading: false
+      }
+    )
+  })
+})
