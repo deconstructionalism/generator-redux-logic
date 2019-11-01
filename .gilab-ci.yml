@@ -1,0 +1,25 @@
+image: node:latest
+
+cache:
+  paths:
+    - node_modules/
+
+stages:
+- lint
+- test
+
+eslint:
+  stage: lint
+  script:
+    - npm i -g eslint
+    - eslint .
+
+test:
+  stage: text
+  script
+    - npm i -g yo
+    - npm link
+    - yo redux-logic
+    - yo redux-logic:reducer first
+    - yo redux-logic:reducer second -a
+    - CI=true npm test
