@@ -2,6 +2,15 @@
   "name": "generator-redux-logic",
   "version": "0.1.0",
   "description": "Yeoman generator to scaffold redux-logic projects",
+  "author": {
+    "name" : "Arjun Ray",
+    "email" : "deconstructionalism@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/deconstructionalism/generator-redux-logic"
+  },
+  "license": "MIT",
   "files": [
     "generators"
   ],
