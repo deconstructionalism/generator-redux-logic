@@ -17,6 +17,7 @@ eslint:
 test:
   stage: test
   script:
+    - npm i
     - npm i -g yo
     - npm link
     - yo redux-logic
