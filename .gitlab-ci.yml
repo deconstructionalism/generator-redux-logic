@@ -11,13 +11,13 @@ stages:
 eslint:
   stage: lint
   script:
+    - npm i
     - npm i -g eslint
     - eslint .
 
 test:
   stage: test
   script:
-    - npm i
     - npm i -g yo
     - npm link
     - yo redux-logic
