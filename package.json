@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "description": "Yeoman generator to scaffold redux-logic projects",
   "author": {
-    "name" : "Arjun Ray",
-    "email" : "deconstructionalism@gmail.com"
+    "name": "Arjun Ray",
+    "email": "deconstructionalism@gmail.com"
   },
   "repository": {
     "type": "git",
