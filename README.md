@@ -1,7 +1,8 @@
 # Yeoman Generator for Redux Logic Projects
 
 This generator can be used with (Yeoman)[] to create and scaffold objects for
-projects using `react`, `redux`, and `redux-logic`.
+projects using `react`, `redux`, and `redux-logic`. The generator will also
+create generic tests.
 
 This generator uses the `react-scripts` package from `create-react-app`, ie all
 `create-react-app` commands and expectations apply here. See [here](https://create-react-app.dev/docs/available-scripts) for details.
