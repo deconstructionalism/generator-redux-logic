@@ -1,6 +1,6 @@
 {
   "name": "generator-redux-logic",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Yeoman generator to scaffold redux-logic projects",
   "author": {
     "name": "Arjun Ray",
@@ -12,7 +12,8 @@
   },
   "license": "MIT",
   "files": [
-    "generators"
+    "generators",
+    "lib"
   ],
   "keywords": [
     "yeoman-generator"

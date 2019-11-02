@@ -45,12 +45,12 @@ module.exports = class extends Generator {
     )
 
     this.fs.copyTpl(
-      this.templatePath('.eslintrc.ejs'),
+      this.templatePath('.eslintrc.js'),
       this.destinationPath('.eslintrc.js')
     )
 
     this.fs.copyTpl(
-      this.templatePath('.gitignore.ejs'),
+      this.templatePath('.gitignore.keep'),
       this.destinationPath('.gitignore')
     )
 
@@ -61,12 +61,12 @@ module.exports = class extends Generator {
     )
 
     this.fs.copy(
-      this.templatePath('./src/App.ejs'),
+      this.templatePath('./src/App.js'),
       this.destinationPath('./src/App.js')
     )
 
     this.fs.copy(
-      this.templatePath('./src/index.ejs'),
+      this.templatePath('./src/index.js'),
       this.destinationPath('./src/index.js')
     )
 
@@ -77,17 +77,17 @@ module.exports = class extends Generator {
     )
 
     this.fs.copy(
-      this.templatePath('./src/redux/actions/feedbackActions.ejs'),
+      this.templatePath('./src/redux/actions/feedbackActions.js'),
       this.destinationPath('./src/redux/actions/feedbackActions.js')
     )
 
     this.fs.copy(
-      this.templatePath('./src/redux/logics/index.ejs'),
+      this.templatePath('./src/redux/logics/index.js'),
       this.destinationPath('./src/redux/logics/index.js')
     )
 
     this.fs.copy(
-      this.templatePath('./src/redux/reducers/index.ejs'),
+      this.templatePath('./src/redux/reducers/index.js'),
       this.destinationPath('./src/redux/reducers/index.js')
     )
   }
