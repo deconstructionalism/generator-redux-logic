@@ -14,12 +14,12 @@ const create<%=capitalized%>Logic = createLogic({
   type: CREATE_<%=upperSnakeCased%>,
   latest: true,
 
-  async process ({ action, getState }, dispatch, done) {
+  async process ({ action, getState, api }, dispatch, done) {
     let hasError = false
     const { data } = action.payload
 
     try {
-      const res = await axios.post('http://localhost:4000/<%=slugCased%>', {
+      const res = await axios.post(`${ api }/<%=slugCased%>`, {
         data
       })
       const { <%=name%> } = res.data

@@ -1,6 +1,6 @@
 {
   "name": "generator-redux-logic",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Yeoman generator to scaffold redux-logic projects",
   "author": {
     "name": "Arjun Ray",
