@@ -6,7 +6,6 @@ cache:
 
 stages:
 - lint
-- test
 
 eslint:
   stage: lint
@@ -14,13 +13,3 @@ eslint:
     - npm i
     - npm i -g eslint
     - eslint .
-
-test:
-  stage: test
-  script:
-    - npm i -g yo
-    - npm link
-    - yo redux-logic
-    - yo redux-logic:reducer first
-    - yo redux-logic:reducer second -a
-    - CI=true npm test
