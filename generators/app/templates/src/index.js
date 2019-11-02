@@ -9,7 +9,7 @@ import rootLogics from './redux/logics/index.js'
 import rootReducer from './redux/reducers/index.js'
 
 const dependencies = {
-  api: 'http://localhost:4000/'
+  api: 'http://localhost:4000'
 }
 
 const middleWare = applyMiddleware(

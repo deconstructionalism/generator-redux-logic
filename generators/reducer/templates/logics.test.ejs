@@ -1,0 +1,130 @@
+import { combineReducers } from 'redux'
+import { createMockStore } from 'redux-logic-test';
+
+import <%=name%>Logics from './<%=name%>Logics.js'
+import <%=name%>Reducer from '../reducers/<%=name%>Reducer.js'
+import {
+  create<%=capitalized%>,
+  create<%=capitalized%>Fulfilled,
+  create<%=capitalized%>Rejected
+} from '../actions/<%=name%>Actions.js'
+import { pushFeedback } from '../actions/feedbackActions.js'
+
+const logic = [...<%=name%>Logics]
+
+const reducer = combineReducers({ <%=name%>: <%=name%>Reducer })
+
+let store
+
+describe('<%=lowerSpaceCase%> logics', () => {
+
+  beforeEach(() => {
+    store = createMockStore({ reducer, logic })
+  })
+
+  afterEach(() => {
+    store = null
+  })
+
+  it('should create <%=lowerSpaceCase%>', (done) => {
+
+    const dispatchData = { name: 'Sandra' }
+
+    const postData = ({
+      <%=name%>: dispatchData
+    })
+
+    const expectedActions = [
+      create<%=capitalized%>(dispatchData),
+      create<%=capitalized%>Fulfilled(postData.<%=name%>),
+      pushFeedback('created <%=lowerSpaceCase%>', 'success')
+    ]
+
+    const expectedStates = [
+      {
+        <%=name%>: {
+          message: null,
+          feedbackMsg: 'creating <%=lowerSpaceCase%>',
+          loading: true
+        }
+      }, {
+        <%=name%>: {
+          message: dispatchData,
+          feedbackMsg: 'created <%=lowerSpaceCase%>',
+          loading: false
+        }
+      }, {
+        <%=name%>: {
+          message: dispatchData,
+          feedbackMsg: 'created <%=lowerSpaceCase%>',
+          loading: false
+        }
+      }
+    ]
+
+    store.subscribe(() => {
+      const expectedState = expectedStates.shift()
+
+      expect(store.getState()).toEqual(expectedState)
+    })
+
+    store.dispatch(create<%=capitalized%>(dispatchData))
+
+    store.whenComplete(() => {
+      expect(store.actions).toEqual(expectedActions)
+      done()
+    })
+
+  })
+
+  it('should fail to create <%=lowerSpaceCase%>', (done) => {
+
+    const dispatchData = { name: 'Edward' }
+
+    const postData = ({
+      <%=name%>: dispatchData
+    })
+
+    const expectedActions = [
+      create<%=capitalized%>(dispatchData),
+      create<%=capitalized%>Rejected(postData.<%=name%>),
+      pushFeedback('failed to create <%=lowerSpaceCase%>', 'error')
+    ]
+
+    const expectedStates = [
+      {
+        <%=name%>: {
+          message: null,
+          feedbackMsg: 'creating <%=lowerSpaceCase%>',
+          loading: true
+        }
+      }, {
+        <%=name%>: {
+          message: dispatchData,
+          feedbackMsg: 'failed to create <%=lowerSpaceCase%>',
+          loading: false
+        }
+      }, {
+        <%=name%>: {
+          message: dispatchData,
+          feedbackMsg: 'failed to create <%=lowerSpaceCase%>',
+          loading: false
+        }
+      }
+    ]
+
+    store.subscribe(() => {
+      const expectedState = expectedStates.shift()
+
+      expect(store.getState()).toEqual(expectedState)
+    })
+
+    store.dispatch(create<%=capitalized%>(dispatchData))
+
+    store.whenComplete(() => {
+      expect(store.actions).toEqual(expectedActions)
+      done()
+    })
+
+  })
+})

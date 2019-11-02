@@ -170,7 +170,7 @@ module.exports = class extends Generator {
     )
 
     !hasRootReducer && this._writeFileFromTemplate(
-      'rootReducerTemplate.ejs',
+      'rootReducer.ejs',
       'src/redux/reducers/index.js',
       context
     )
@@ -178,35 +178,49 @@ module.exports = class extends Generator {
     this._addReducerToStore()
 
     this._writeFileFromTemplate(
-      'actionsTemplate.ejs',
+      'actions.ejs',
       `src/redux/actions/${reducerName}Actions.js`,
       context,
       true
     )
 
     this._writeFileFromTemplate(
-        isAsynchronous ? 'reducerTemplateAsync.ejs' : 'reducerTemplate.ejs',
+        isAsynchronous ? 'reducerAsync.ejs' : 'reducer.ejs',
         `src/redux/reducers/${reducerName}Reducer.js`,
         context,
         true
     )
 
-    isAsynchronous && this._writeFileFromTemplate(
-      'logicsTemplate.ejs',
-      `src/redux/logics/${reducerName}Logics.js`,
-      context
-    )
+    if (isAsynchronous) {
 
-    const hasRootLogic = this.fs.exists(
-      this.destinationPath('src/redux/logics/index.js')
-    )
+      this._writeFileFromTemplate(
+        'logics.ejs',
+        `src/redux/logics/${reducerName}Logics.js`,
+        context
+      )
 
-    isAsynchronous && !hasRootLogic && this._writeFileFromTemplate(
-      'rootLogicTemplate.ejs',
-      'src/redux/logics/index.js',
-      context
-    )
+      this._writeFileFromTemplate(
+        'logics.test.ejs',
+        `src/redux/logics/${reducerName}Logics.test.js`,
+        context
+      )
 
-    isAsynchronous && this._addLogicToRootLogic()
+      this._writeFileFromTemplate(
+        'axiosMock.ejs',
+        `src/redux/logics/__mocks__/axios.js`
+      )
+
+      const hasRootLogic = this.fs.exists(
+        this.destinationPath('src/redux/logics/index.js')
+      )
+
+      !hasRootLogic && this._writeFileFromTemplate(
+        'rootLogic.ejs',
+        'src/redux/logics/index.js',
+        context
+      )
+
+      this._addLogicToRootLogic()
+    }
   }
 }
